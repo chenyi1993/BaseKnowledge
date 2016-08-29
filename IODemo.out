@@ -1,0 +1,84 @@
+1 : /**
+2 :  * @author shadow
+3 :  * @Date 2016年8月13日下午8:39:16
+4 :  * @Fun
+5 :  **/
+6 : package io;
+7 : 
+8 : import java.awt.event.MouseWheelEvent;
+9 : import java.io.BufferedReader;
+10 : import java.io.BufferedWriter;
+11 : import java.io.ByteArrayInputStream;
+12 : import java.io.DataInputStream;
+13 : import java.io.File;
+14 : import java.io.FileReader;
+15 : import java.io.FileWriter;
+16 : import java.io.IOException;
+17 : import java.io.InputStreamReader;
+18 : import java.io.PrintWriter;
+19 : import java.io.StringReader;
+20 : 
+21 : public class IOStreamDemo {
+22 : 	public static void main(String[] args) throws IOException {
+23 : 		
+24 : 		String s2 = readByLine();
+25 : 		//readByStanardInput();
+26 : 		//inputFromMemory(s2);
+27 : 		//inputFormatMemory(s2);
+28 : 		outputFile(s2);
+29 : 	
+30 : 
+31 : 	}
+32 : 	
+33 : 	public static void outputFile(String s2) throws IOException{
+34 : 		BufferedReader reader = new BufferedReader(new StringReader(s2));
+35 : 		PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("IODemo.out")));
+36 : 		int lineCount = 1;
+37 : 		String s = null;
+38 : 		while((s = reader.readLine()) != null){
+39 : 			writer.println(lineCount + " : " + s);
+40 : 			lineCount++;
+41 : 		}
+42 : 		reader.close();
+43 : 		writer.close();
+44 : 	}
+45 : 	
+46 : 	/**
+47 : 	 * Formatted memory input
+48 : 	 * @param s2
+49 : 	 * @throws IOException
+50 : 	 */
+51 : 	public static void inputFormatMemory(String s2) throws IOException{
+52 : 		DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(s2.getBytes()));
+53 : 		
+54 : 		while(true){
+55 : 			System.out.println((char) inputStream.readByte());
+56 : 		}
+57 : 	}
+58 : 	
+59 : 	public static void inputFromMemory(String s2) throws IOException{
+60 : 		StringReader reader = new StringReader(s2);
+61 : 		int c;
+62 : 		while((c = reader.read()) != -1){
+63 : 			System.out.print((char) c);
+64 : 		}
+65 : 	}
+66 : 	
+67 : 	public static String readByLine() throws IOException{
+68 : 		BufferedReader in = new BufferedReader(
+69 : 				new FileReader("src" + File.separator + "io" + File.separator + "IOStreamDemo.java"));
+70 : 		String s, s2 = new String();
+71 : 		while ((s = in.readLine()) != null) {
+72 : 			s2 += s + "\n";
+73 : 		}
+74 : 		in.close();
+75 : 		return s2;
+76 : 	}
+77 : 	
+78 : 	public static void readByStanardInput() throws IOException{
+79 : 		BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
+80 : 		System.out.println("Enter a line:");
+81 : 		System.out.println(stdin.readLine());
+82 : 	}
+83 : 
+84 : }
