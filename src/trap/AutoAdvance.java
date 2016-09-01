@@ -2,7 +2,7 @@
 package trap;
 
 /**
- *
+ * @fun 类型自动转换
  * @author shadow E-mail:zyydqpi@163.com
  * @Date 2016年8月23日下午8:02:15
  * @version 1.0
