@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import org.w3c.dom.ls.LSException;
+
 /**
  *
  * @author shadow E-mail:zyydqpi@163.com
@@ -32,8 +34,14 @@ public class ListPerformance {
 	}
 	
 	public static void main(String[] args) {
-		test(new ArrayList<>());
-		test(new LinkedList<>());
+		//test(new ArrayList<>());
+		//test(new LinkedList<>());
+		
+		List<Character> list = new LinkedList<>();
+		list.add('b');
+		list.add('a');
+		list.add('z');
+		System.out.println(list);
 	}
 
 	@SuppressWarnings("unchecked")
